@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Living Docs - POC</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .scenario {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .tag {
+      background: #eef;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Living Documentation (POC)</h1>
+
+<div class="scenario" id="COS-01">
+  <div class="tag">COS-01</div>
+  <h3>Successful login with valid credentials</h3>
+  <p>Given user is on login page</p><p>When user enters valid credentials</p><p>Then user should be logged in</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A2" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+<div class="scenario" id="COS-02">
+  <div class="tag">COS-02</div>
+  <h3>Login fails with invalid credentials</h3>
+  <p>Given user is on login page</p><p>When user enters invalid credentials</p><p>Then error message should be displayed</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A3" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+<div class="scenario" id="COS-03">
+  <div class="tag">COS-03</div>
+  <h3>User logs out successfully</h3>
+  <p>Given user is logged in</p><p>When user clicks logout</p><p>Then user should be logged out</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A4" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+</body>
+</html>
