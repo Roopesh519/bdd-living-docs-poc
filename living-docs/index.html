@@ -44,5 +44,54 @@
   <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A4" target="_blank">🔗 View Requirement in Google Sheet</a>
 </div>
 
+<div class="scenario" id="COS-04">
+  <div class="tag">COS-04</div>
+  <h3>Login fails with empty username</h3>
+  <p>Given user is on login page</p><p>When user leaves username empty and enters password</p><p>Then error message "Username is required" should be displayed</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A5" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+<div class="scenario" id="COS-05">
+  <div class="tag">COS-05</div>
+  <h3>Login fails with empty password</h3>
+  <p>Given user is on login page</p><p>When user enters username and leaves password empty</p><p>Then error message "Password is required" should be displayed</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A6" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+<div class="scenario" id="COS-06">
+  <div class="tag">COS-06</div>
+  <h3>Account locks after multiple failed attempts</h3>
+  <p>Given user is on login page</p><p>When user enters invalid credentials 5 times</p><p>Then account should be locked</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A7" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+<div class="scenario" id="COS-07">
+  <div class="tag">COS-07</div>
+  <h3>User can reset password via forgot password link</h3>
+  <p>Given user is on login page</p><p>When user clicks "Forgot Password" link</p><p>Then password reset email should be sent</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A8" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+<div class="scenario" id="COS-08">
+  <div class="tag">COS-08</div>
+  <h3>Session expires after inactivity</h3>
+  <p>Given user is logged in</p><p>When user is inactive for 30 minutes</p><p>Then user session should expire</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A9" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+<div class="scenario" id="COS-09">
+  <div class="tag">COS-09</div>
+  <h3>Remember me keeps user logged in</h3>
+  <p>Given user is on login page</p><p>When user enters valid credentials</p><p>Then user should still be logged in</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A10" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
+<div class="scenario" id="COS-10">
+  <div class="tag">COS-10</div>
+  <h3>User can toggle password visibility</h3>
+  <p>Given user is on login page</p><p>When user enters password in password field</p><p>Then password should be visible in plain text</p>
+  <a href="https://docs.google.com/spreadsheets/d/11j8wJ7jR-xv-cc4eK93CsNCQ5zbpYqKz2Vxw8W8AI6o/edit#gid=0&range=A11" target="_blank">🔗 View Requirement in Google Sheet</a>
+</div>
+
 </body>
 </html>
