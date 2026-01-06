@@ -290,6 +290,28 @@
     .back-link:hover {
       text-decoration: underline;
     }
+
+    /* Smooth scrolling for anchor navigation */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Highlight target feature card when navigated via hash */
+    .feature-card:target {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      animation: highlight-pulse 2s ease-out;
+    }
+
+    @keyframes highlight-pulse {
+      0% { box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.4); }
+      100% { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
+    }
+
+    /* Offset for fixed headers if needed */
+    .feature-card {
+      scroll-margin-top: 20px;
+    }
   </style>
 </head>
 <body>

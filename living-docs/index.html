@@ -290,6 +290,28 @@
     .back-link:hover {
       text-decoration: underline;
     }
+
+    /* Smooth scrolling for anchor navigation */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Highlight target feature card when navigated via hash */
+    .feature-card:target {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      animation: highlight-pulse 2s ease-out;
+    }
+
+    @keyframes highlight-pulse {
+      0% { box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.4); }
+      100% { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
+    }
+
+    /* Offset for fixed headers if needed */
+    .feature-card {
+      scroll-margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -317,7 +339,7 @@
 
   <div class="feature-list">
 
-    <a href="01_login.html" class="feature-card">
+    <a href="01_login.html" class="feature-card" id="cos-01">
       <div class="feature-card-header">
         <div>
           <h2>Login</h2>
@@ -331,7 +353,7 @@
       </div>
     </a>
 
-    <a href="02_forgot_password.html" class="feature-card">
+    <a href="02_forgot_password.html" class="feature-card" id="cos-02">
       <div class="feature-card-header">
         <div>
           <h2>Forgot Password</h2>
@@ -345,7 +367,7 @@
       </div>
     </a>
 
-    <a href="03_create_admin.html" class="feature-card">
+    <a href="03_create_admin.html" class="feature-card" id="cos-03">
       <div class="feature-card-header">
         <div>
           <h2>Create Admin</h2>
@@ -359,7 +381,7 @@
       </div>
     </a>
 
-    <a href="04_access_privelege.html" class="feature-card">
+    <a href="04_access_privelege.html" class="feature-card" id="cos-04">
       <div class="feature-card-header">
         <div>
           <h2>Access Privilege</h2>
@@ -373,7 +395,7 @@
       </div>
     </a>
 
-    <a href="05_list_admin.html" class="feature-card">
+    <a href="05_list_admin.html" class="feature-card" id="cos-05">
       <div class="feature-card-header">
         <div>
           <h2>List Admin</h2>

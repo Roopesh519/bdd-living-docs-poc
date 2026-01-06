@@ -407,6 +407,28 @@ function getStyles() {
     .back-link:hover {
       text-decoration: underline;
     }
+
+    /* Smooth scrolling for anchor navigation */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Highlight target feature card when navigated via hash */
+    .feature-card:target {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      animation: highlight-pulse 2s ease-out;
+    }
+
+    @keyframes highlight-pulse {
+      0% { box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.4); }
+      100% { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
+    }
+
+    /* Offset for fixed headers if needed */
+    .feature-card {
+      scroll-margin-top: 20px;
+    }
   `;
 }
 
@@ -468,8 +490,9 @@ function generateIndexPage(features) {
 
   features.forEach((feature) => {
     const detailPageName = `${feature.fileName}.html`;
+    const anchorId = feature.cos ? feature.cos.toLowerCase() : feature.fileName;
     html += `
-    <a href="${detailPageName}" class="feature-card">
+    <a href="${detailPageName}" class="feature-card" id="${anchorId}">
       <div class="feature-card-header">
         <div>
           <h2>${feature.name || feature.fileName}</h2>
