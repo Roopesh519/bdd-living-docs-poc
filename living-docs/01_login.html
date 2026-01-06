@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Living Documentation - ZoodPay</title>
+  <title>Login - Living Documentation</title>
   <style>
     :root {
       --primary: #2563eb;
@@ -294,98 +294,81 @@
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <h1>📋 Living Documentation</h1>
-    <p>ZoodPay Admin Portal - BDD Feature Specifications</p>
-  </div>
-</header>
+<nav class="breadcrumb">
+  <a href="index.html">Living Documentation</a>
+  <span>›</span>
+  Login
+</nav>
 
 <div class="container">
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-value">5</div>
-      <div class="stat-label">Features</div>
+  <a href="index.html" class="back-link">← Back to Features</a>
+
+  <div class="feature-header">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <h1>Login</h1>
+        <p class="description">As an Admin, I want an option to login so that I can access the application.</p>
+      </div>
+      <span class="tag">COS-01</span>
     </div>
-    <div class="stat">
-      <div class="stat-value">63</div>
-      <div class="stat-label">Scenarios</div>
+    <div class="feature-meta">
+      <a href="https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C2" target="_blank" class="req-link">🔗 View Requirement in Google Sheet</a>
+      <span class="scenario-count">📝 9 Scenarios</span>
     </div>
   </div>
 
-  <h2 style="margin: 32px 0 20px; font-size: 1.5rem;">Feature Files</h2>
+  <div class="background-section">
+    <h3>📌 Background (runs before each scenario)</h3>
+    <div class="step given"><span class="step-keyword">Given</span> user is on the login page</div>
+  </div>
 
-  <div class="feature-list">
+  <div class="scenarios-section">
+    <h2>Scenarios</h2>
 
-    <a href="01_login.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>Login</h2>
-          <p class="description">As an Admin, I want an option to login so that I can access the application.</p>
-        </div>
-        <span class="tag">COS-01</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 9 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C2', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>1. Successful login with valid credentials</h3>
+      <div class="step when"><span class="step-keyword">When</span> admin enters valid registered email address</div><div class="step and"><span class="step-keyword">And</span> admin enters valid password</div><div class="step and"><span class="step-keyword">And</span> admin clicks the login button</div><div class="step then"><span class="step-keyword">Then</span> admin should receive a 6-digit OTP on registered email</div><div class="step and"><span class="step-keyword">And</span> admin should be redirected to OTP verification page</div>
+    </div>
 
-    <a href="02_forgot_password.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>Forgot Password</h2>
-          <p class="description">As an Admin who forgot the password, I want an option to reset my password so that I can set a new password and log in.</p>
-        </div>
-        <span class="tag">COS-02</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 9 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C3', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>2. Login fails with invalid email</h3>
+      <div class="step when"><span class="step-keyword">When</span> admin enters invalid email address</div><div class="step and"><span class="step-keyword">And</span> admin enters a password</div><div class="step and"><span class="step-keyword">And</span> admin clicks the login button</div><div class="step then"><span class="step-keyword">Then</span> an error message "Invalid email address" should be displayed</div>
+    </div>
 
-    <a href="03_create_admin.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>Create Admin</h2>
-          <p class="description">As a super admin, I want an option to create an admin user so that I can onboard the admin user to the platform.</p>
-        </div>
-        <span class="tag">COS-03</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 20 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C4', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>3. Login fails with invalid password</h3>
+      <div class="step when"><span class="step-keyword">When</span> admin enters valid registered email address</div><div class="step and"><span class="step-keyword">And</span> admin enters invalid password</div><div class="step and"><span class="step-keyword">And</span> admin clicks the login button</div><div class="step then"><span class="step-keyword">Then</span> an error message "Invalid password" should be displayed</div>
+    </div>
 
-    <a href="04_access_privelege.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>Access Privilege</h2>
-          <p class="description">As a super admin, I want an option to manage privileges while onboarding the admin user to the platform.</p>
-        </div>
-        <span class="tag">COS-04</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 13 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C5', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>4. Login fails with non-zoodpay email domain</h3>
+      <div class="step when"><span class="step-keyword">When</span> admin enters email with non-zoodpay domain</div><div class="step and"><span class="step-keyword">And</span> admin enters a password</div><div class="step and"><span class="step-keyword">And</span> admin clicks the login button</div><div class="step then"><span class="step-keyword">Then</span> an error message "Only zood-pay.com email IDs are allowed" should be displayed</div>
+    </div>
 
-    <a href="05_list_admin.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>List Admin</h2>
-          <p class="description">As a super admin, I want to view a list of admin users so that I can manage them.</p>
-        </div>
-        <span class="tag">COS-05</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 12 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C6', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>5. OTP is 6 digits in length</h3>
+      <div class="step given"><span class="step-keyword">Given</span> admin has entered valid credentials</div><div class="step when"><span class="step-keyword">When</span> admin receives the OTP</div><div class="step then"><span class="step-keyword">Then</span> the OTP should be exactly 6 digits</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>6. OTP expires after 2 minutes</h3>
+      <div class="step given"><span class="step-keyword">Given</span> admin has received the OTP</div><div class="step when"><span class="step-keyword">When</span> admin waits for more than 2 minutes</div><div class="step and"><span class="step-keyword">And</span> admin enters the OTP</div><div class="step then"><span class="step-keyword">Then</span> an error message "OTP has expired" should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>7. Invalid OTP displays error message</h3>
+      <div class="step given"><span class="step-keyword">Given</span> admin has received the OTP</div><div class="step when"><span class="step-keyword">When</span> admin enters an invalid OTP</div><div class="step then"><span class="step-keyword">Then</span> an error message "Invalid OTP" should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>8. Resend OTP option available after 30 seconds</h3>
+      <div class="step given"><span class="step-keyword">Given</span> admin has received the OTP</div><div class="step when"><span class="step-keyword">When</span> admin waits for 30 seconds</div><div class="step then"><span class="step-keyword">Then</span> the "Resend OTP" option should be enabled</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>9. Successful login redirects to Dashboard</h3>
+      <div class="step given"><span class="step-keyword">Given</span> admin has entered valid credentials</div><div class="step and"><span class="step-keyword">And</span> admin has received the OTP</div><div class="step when"><span class="step-keyword">When</span> admin enters valid OTP within 2 minutes</div><div class="step then"><span class="step-keyword">Then</span> admin should be redirected to the Dashboard</div>
+    </div>
 
   </div>
 </div>

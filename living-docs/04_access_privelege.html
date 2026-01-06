@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Privilege - Living Documentation</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #64748b;
+      --success: #10b981;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-light: #64748b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 40px 20px;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    .breadcrumb {
+      background: var(--card-bg);
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      color: var(--secondary);
+      margin: 0 8px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .feature-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .feature-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h2 {
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .feature-card .description {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tag {
+      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .scenario-count {
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    .req-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .req-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Feature Detail Page */
+    .feature-header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .feature-header h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-header .description {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .background-section {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .background-section h3 {
+      color: #a16207;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+
+    .background-section .step {
+      color: #854d0e;
+      padding: 4px 0;
+    }
+
+    .scenarios-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .scenario-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .scenario-card h3 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9rem;
+    }
+
+    .step::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .step.given::before { background: #22c55e; }
+    .step.when::before { background: #3b82f6; }
+    .step.then::before { background: #a855f7; }
+    .step.and::before { background: #64748b; }
+
+    .step-keyword {
+      font-weight: 700;
+    }
+
+    .step.given .step-keyword { color: #16a34a; }
+    .step.when .step-keyword { color: #2563eb; }
+    .step.then .step-keyword { color: #9333ea; }
+    .step.and .step-keyword { color: #475569; }
+
+    .stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      padding: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+  <a href="index.html">Living Documentation</a>
+  <span>›</span>
+  Access Privilege
+</nav>
+
+<div class="container">
+  <a href="index.html" class="back-link">← Back to Features</a>
+
+  <div class="feature-header">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <h1>Access Privilege</h1>
+        <p class="description">As a super admin, I want an option to manage privileges while onboarding the admin user to the platform.</p>
+      </div>
+      <span class="tag">COS-04</span>
+    </div>
+    <div class="feature-meta">
+      <a href="https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C5" target="_blank" class="req-link">🔗 View Requirement in Google Sheet</a>
+      <span class="scenario-count">📝 13 Scenarios</span>
+    </div>
+  </div>
+
+  <div class="background-section">
+    <h3>📌 Background (runs before each scenario)</h3>
+    <div class="step given"><span class="step-keyword">Given</span> super admin is logged in</div><div class="step and"><span class="step-keyword">And</span> super admin is on the admin user privileges page</div>
+  </div>
+
+  <div class="scenarios-section">
+    <h2>Scenarios</h2>
+
+    <div class="scenario-card">
+      <h3>1. Super admin has all privileges</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin views the privileges of a super admin user</div><div class="step then"><span class="step-keyword">Then</span> all privileges should be selected</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>2. Selecting Super Admin auto-selects all sub-privileges</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects "Super Admin" role</div><div class="step then"><span class="step-keyword">Then</span> all sub-privileges should be automatically selected</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>3. Selecting all privileges auto-selects Super Admin</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects all individual privileges</div><div class="step then"><span class="step-keyword">Then</span> "Super Admin" role should be automatically selected</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>4. At least one privilege must be selected</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin deselects all privileges</div><div class="step and"><span class="step-keyword">And</span> super admin clicks "Save" button</div><div class="step then"><span class="step-keyword">Then</span> an error message "At least one privilege must be selected" should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>5. Confirmation prompt when making admin a super admin</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects all privileges for an admin user</div><div class="step then"><span class="step-keyword">Then</span> a confirmation prompt "Are you sure you want to make this admin a Super Admin?" should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>6. Select all privileges option available</h3>
+      <div class="step then"><span class="step-keyword">Then</span> super admin should see a "Select All" option</div><div class="step when"><span class="step-keyword">When</span> super admin clicks "Select All"</div><div class="step then"><span class="step-keyword">Then</span> all privileges should be selected</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>7. Individual privilege selection available</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects a specific privilege</div><div class="step then"><span class="step-keyword">Then</span> only that privilege should be selected</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>8. Selecting privilege auto-selects sub-privileges</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects a parent privilege</div><div class="step then"><span class="step-keyword">Then</span> all sub-privileges under that parent should be automatically selected</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>9. Dependent privileges auto-selected</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects a privilege that has dependencies</div><div class="step then"><span class="step-keyword">Then</span> the dependent privileges should also be automatically selected</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>10. E-Top up wallet or digital wallet selection</h3>
+      <div class="step then"><span class="step-keyword">Then</span> super admin should see options for "E-Top up wallet" and "Digital wallet"</div><div class="step and"><span class="step-keyword">And</span> super admin should be able to select either option</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>11. Success message on admin creation with privileges</h3>
+      <div class="step given"><span class="step-keyword">Given</span> super admin has filled all mandatory fields</div><div class="step and"><span class="step-keyword">And</span> super admin has selected at least one privilege</div><div class="step when"><span class="step-keyword">When</span> super admin clicks "Save" button</div><div class="step then"><span class="step-keyword">Then</span> a success message "Admin user added successfully" should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>12. Confirmation prompt before adding access privilege roles</h3>
+      <div class="step given"><span class="step-keyword">Given</span> super admin has selected privileges for the admin user</div><div class="step when"><span class="step-keyword">When</span> super admin clicks "Save" button</div><div class="step then"><span class="step-keyword">Then</span> a confirmation prompt should be displayed</div><div class="step when"><span class="step-keyword">When</span> super admin confirms the action</div><div class="step then"><span class="step-keyword">Then</span> a success message should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>13. Confirmation prompt when unselecting Super Admin access</h3>
+      <div class="step given"><span class="step-keyword">Given</span> an admin user has Super Admin access</div><div class="step when"><span class="step-keyword">When</span> super admin unselects the Super Admin access</div><div class="step then"><span class="step-keyword">Then</span> a confirmation prompt "Are you sure you want to remove Super Admin access?" should be displayed</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

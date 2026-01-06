@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Living Documentation - ZoodPay</title>
+  <title>List Admin - Living Documentation</title>
   <style>
     :root {
       --primary: #2563eb;
@@ -294,98 +294,96 @@
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <h1>📋 Living Documentation</h1>
-    <p>ZoodPay Admin Portal - BDD Feature Specifications</p>
-  </div>
-</header>
+<nav class="breadcrumb">
+  <a href="index.html">Living Documentation</a>
+  <span>›</span>
+  List Admin
+</nav>
 
 <div class="container">
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-value">5</div>
-      <div class="stat-label">Features</div>
+  <a href="index.html" class="back-link">← Back to Features</a>
+
+  <div class="feature-header">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <h1>List Admin</h1>
+        <p class="description">As a super admin, I want to view a list of admin users so that I can manage them.</p>
+      </div>
+      <span class="tag">COS-05</span>
     </div>
-    <div class="stat">
-      <div class="stat-value">63</div>
-      <div class="stat-label">Scenarios</div>
+    <div class="feature-meta">
+      <a href="https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C6" target="_blank" class="req-link">🔗 View Requirement in Google Sheet</a>
+      <span class="scenario-count">📝 12 Scenarios</span>
     </div>
   </div>
 
-  <h2 style="margin: 32px 0 20px; font-size: 1.5rem;">Feature Files</h2>
+  <div class="background-section">
+    <h3>📌 Background (runs before each scenario)</h3>
+    <div class="step given"><span class="step-keyword">Given</span> super admin is logged in</div><div class="step and"><span class="step-keyword">And</span> super admin navigates to "Admin Users" list page</div>
+  </div>
 
-  <div class="feature-list">
+  <div class="scenarios-section">
+    <h2>Scenarios</h2>
 
-    <a href="01_login.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>Login</h2>
-          <p class="description">As an Admin, I want an option to login so that I can access the application.</p>
-        </div>
-        <span class="tag">COS-01</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 9 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C2', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>1. Users listed in chronological order by default</h3>
+      <div class="step when"><span class="step-keyword">When</span> the admin users list is displayed</div><div class="step then"><span class="step-keyword">Then</span> users should be sorted by creation date in descending order</div>
+    </div>
 
-    <a href="02_forgot_password.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>Forgot Password</h2>
-          <p class="description">As an Admin who forgot the password, I want an option to reset my password so that I can set a new password and log in.</p>
-        </div>
-        <span class="tag">COS-02</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 9 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C3', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>2. Search admin by name</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin enters a name in the search field</div><div class="step and"><span class="step-keyword">And</span> super admin clicks "Search" button</div><div class="step then"><span class="step-keyword">Then</span> only admin users matching the name should be displayed</div>
+    </div>
 
-    <a href="03_create_admin.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>Create Admin</h2>
-          <p class="description">As a super admin, I want an option to create an admin user so that I can onboard the admin user to the platform.</p>
-        </div>
-        <span class="tag">COS-03</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 20 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C4', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>3. Search admin by user code</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin enters a user code in the search field</div><div class="step and"><span class="step-keyword">And</span> super admin clicks "Search" button</div><div class="step then"><span class="step-keyword">Then</span> only admin users matching the user code should be displayed</div>
+    </div>
 
-    <a href="04_access_privelege.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>Access Privilege</h2>
-          <p class="description">As a super admin, I want an option to manage privileges while onboarding the admin user to the platform.</p>
-        </div>
-        <span class="tag">COS-04</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 13 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C5', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>4. Filter by active status</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects "Active" status filter</div><div class="step then"><span class="step-keyword">Then</span> only active admin users should be displayed</div>
+    </div>
 
-    <a href="05_list_admin.html" class="feature-card">
-      <div class="feature-card-header">
-        <div>
-          <h2>List Admin</h2>
-          <p class="description">As a super admin, I want to view a list of admin users so that I can manage them.</p>
-        </div>
-        <span class="tag">COS-05</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 12 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C6', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>5. Filter by inactive status</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects "Inactive" status filter</div><div class="step then"><span class="step-keyword">Then</span> only inactive admin users should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>6. Filter by date range</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects a start date and end date</div><div class="step and"><span class="step-keyword">And</span> super admin applies the filter</div><div class="step then"><span class="step-keyword">Then</span> only admin users created within that date range should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>7. Pagination with more than 10 users</h3>
+      <div class="step given"><span class="step-keyword">Given</span> there are more than 10 admin users in the system</div><div class="step when"><span class="step-keyword">When</span> the admin users list is displayed</div><div class="step then"><span class="step-keyword">Then</span> pagination controls should be visible</div><div class="step and"><span class="step-keyword">And</span> only 10 users should be displayed per page</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>8. Sort by name</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin clicks on "Name" column header</div><div class="step then"><span class="step-keyword">Then</span> admin users should be sorted alphabetically by name</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>9. Sort by created date</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin clicks on "Created Date" column header</div><div class="step then"><span class="step-keyword">Then</span> admin users should be sorted by creation date</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>10. Empty state when no users exist</h3>
+      <div class="step given"><span class="step-keyword">Given</span> there are no admin users in the system</div><div class="step when"><span class="step-keyword">When</span> the admin users list page loads</div><div class="step then"><span class="step-keyword">Then</span> an empty screen should be displayed</div><div class="step and"><span class="step-keyword">And</span> a message "No admin users found" should be shown</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>11. No results found for filter</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin applies a filter with no matching results</div><div class="step then"><span class="step-keyword">Then</span> a message "No results found for the applied filter" should be displayed</div>
+    </div>
+
+    <div class="scenario-card">
+      <h3>12. Start date greater than end date shows error</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin selects a start date greater than end date</div><div class="step and"><span class="step-keyword">And</span> super admin applies the filter</div><div class="step then"><span class="step-keyword">Then</span> an error message "Start date cannot be greater than end date" should be displayed</div>
+    </div>
 
   </div>
 </div>
