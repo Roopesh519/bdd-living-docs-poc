@@ -9,6 +9,14 @@ on:
   pull_request:
     branches:
       - main
+  # Allow manual trigger
+  workflow_dispatch:
+
+# Grant permissions for committing and GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   generate-docs:
@@ -17,6 +25,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,7 +41,7 @@ jobs:
 
       - name: Run Script (Google Sheets sync)
         run: node runScript.js
-        continue-on-error: true  # Don't fail the build if script times out
+        continue-on-error: true
 
       - name: Upload Living Docs as artifact
         uses: actions/upload-artifact@v4
@@ -40,13 +50,41 @@ jobs:
           path: living-docs/
           retention-days: 30
 
-      # Only commit and push on main branch (not on PRs)
+      # Commit and push generated docs back to repo (only on main)
       - name: Commit and push Living Docs
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add living-docs/
-          git diff --staged --quiet || git commit -m "docs: Auto-generate living documentation"
+          git diff --staged --quiet || git commit -m "docs: Auto-generate living documentation [skip ci]"
           git push
 
+  # Deploy to GitHub Pages (only on main branch)
+  deploy-pages:
+    needs: generate-docs
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Download living-docs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: living-docs
+          path: living-docs/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: living-docs/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
