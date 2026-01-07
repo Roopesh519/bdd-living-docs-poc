@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Living Documentation - ZoodPay</title>
+  <title>Export List - Living Documentation</title>
   <style>
     :root {
       --primary: #2563eb;
@@ -316,126 +316,66 @@
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <h1>📋 Living Documentation</h1>
-    <p>ZoodPay Admin Portal - BDD Feature Specifications</p>
-  </div>
-</header>
+<nav class="breadcrumb">
+  <a href="index.html">Living Documentation</a>
+  <span>›</span>
+  Export List
+</nav>
 
 <div class="container">
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-value">7</div>
-      <div class="stat-label">Features</div>
+  <a href="index.html" class="back-link">← Back to Features</a>
+
+  <div class="feature-header">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <h1>Export List</h1>
+        <p class="description">As a super admin, I want an option to export the list of all the admin users on the platform.</p>
+      </div>
+      <span class="tag">COS-06</span>
     </div>
-    <div class="stat">
-      <div class="stat-value">87</div>
-      <div class="stat-label">Scenarios</div>
+    <div class="feature-meta">
+      <a href="https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C7" target="_blank" class="req-link">🔗 View Requirement in Google Sheet</a>
+      <span class="scenario-count">📝 6 Scenarios</span>
     </div>
   </div>
 
-  <h2 style="margin: 32px 0 20px; font-size: 1.5rem;">Feature Files</h2>
+  <div class="background-section">
+    <h3>📌 Background (runs before each scenario)</h3>
+    <div class="step given"><span class="step-keyword">Given</span> super admin is logged in</div><div class="step and"><span class="step-keyword">And</span> super admin is on the "Admin Users" list page</div>
+  </div>
 
-  <div class="feature-list">
+  <div class="scenarios-section">
+    <h2>Scenarios</h2>
 
-    <a href="01_login.html" class="feature-card" id="cos-01">
-      <div class="feature-card-header">
-        <div>
-          <h2>Login</h2>
-          <p class="description">As an Admin, I want an option to login so that I can access the application.</p>
-        </div>
-        <span class="tag">COS-01</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 9 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C2', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>1. Export option is available</h3>
+      <div class="step then"><span class="step-keyword">Then</span> super admin should see an "Export" button</div>
+    </div>
 
-    <a href="02_forgot_password.html" class="feature-card" id="cos-02">
-      <div class="feature-card-header">
-        <div>
-          <h2>Forgot Password</h2>
-          <p class="description">As an Admin who forgot the password, I want an option to reset my password so that I can set a new password and log in.</p>
-        </div>
-        <span class="tag">COS-02</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 9 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C3', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>2. Export format options available</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin clicks on "Export" button</div><div class="step then"><span class="step-keyword">Then</span> super admin should see export format options</div><div class="step and"><span class="step-keyword">And</span> the options should include "CSV", "PDF", and "XLSX"</div>
+    </div>
 
-    <a href="03_create_admin.html" class="feature-card" id="cos-03">
-      <div class="feature-card-header">
-        <div>
-          <h2>Create Admin</h2>
-          <p class="description">As a super admin, I want an option to create an admin user so that I can onboard the admin user to the platform.</p>
-        </div>
-        <span class="tag">COS-03</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 20 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C4', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>3. Export list as CSV</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin clicks on "Export" button</div><div class="step and"><span class="step-keyword">And</span> super admin selects "CSV" format</div><div class="step then"><span class="step-keyword">Then</span> a confirmation message "Export will be sent to your email" should be displayed</div>
+    </div>
 
-    <a href="04_access_privelege.html" class="feature-card" id="cos-04">
-      <div class="feature-card-header">
-        <div>
-          <h2>Access Privilege</h2>
-          <p class="description">As a super admin, I want an option to manage privileges while onboarding the admin user to the platform.</p>
-        </div>
-        <span class="tag">COS-04</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 13 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C5', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>4. Export list as PDF</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin clicks on "Export" button</div><div class="step and"><span class="step-keyword">And</span> super admin selects "PDF" format</div><div class="step then"><span class="step-keyword">Then</span> a confirmation message "Export will be sent to your email" should be displayed</div>
+    </div>
 
-    <a href="05_list_admin.html" class="feature-card" id="cos-05">
-      <div class="feature-card-header">
-        <div>
-          <h2>List Admin</h2>
-          <p class="description">As a super admin, I want to view a list of admin users so that I can manage them.</p>
-        </div>
-        <span class="tag">COS-05</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 12 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C6', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>5. Export list as XLSX</h3>
+      <div class="step when"><span class="step-keyword">When</span> super admin clicks on "Export" button</div><div class="step and"><span class="step-keyword">And</span> super admin selects "XLSX" format</div><div class="step then"><span class="step-keyword">Then</span> a confirmation message "Export will be sent to your email" should be displayed</div>
+    </div>
 
-    <a href="06_Export_List.html" class="feature-card" id="cos-06">
-      <div class="feature-card-header">
-        <div>
-          <h2>Export List</h2>
-          <p class="description">As a super admin, I want an option to export the list of all the admin users on the platform.</p>
-        </div>
-        <span class="tag">COS-06</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 6 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C7', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
-
-    <a href="07_Update_admin.html" class="feature-card" id="cos-08">
-      <div class="feature-card-header">
-        <div>
-          <h2>Update Admin</h2>
-          <p class="description">As a super admin, I want an option to update an existing admin user so that I can modify their details on the platform.</p>
-        </div>
-        <span class="tag">COS-08</span>
-      </div>
-      <div class="feature-card-footer">
-        <span class="scenario-count">📝 18 Scenarios</span>
-        <span class="req-link" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://docs.google.com/spreadsheets/d/19QLnfMQuvunN7Een-3iJswbUSvkt8n8IvOb8XjgNP14/edit?gid=48925672#gid=48925672&range=C9', '_blank');">🔗 View Requirement</span>
-      </div>
-    </a>
+    <div class="scenario-card">
+      <h3>6. Exported list is sent via email</h3>
+      <div class="step given"><span class="step-keyword">Given</span> super admin has selected an export format</div><div class="step when"><span class="step-keyword">When</span> the export is processed</div><div class="step then"><span class="step-keyword">Then</span> super admin should receive an email with the exported file</div><div class="step and"><span class="step-keyword">And</span> the email should contain the admin users list in the selected format</div>
+    </div>
 
   </div>
 </div>
