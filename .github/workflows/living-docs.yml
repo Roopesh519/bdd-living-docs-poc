@@ -1,0 +1,52 @@
+name: Generate Living Docs
+
+on:
+  # Trigger on push to main
+  push:
+    branches:
+      - main
+  # Trigger on PR to main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Living Documentation
+        run: node generateLivingDocs.js
+
+      - name: Run Script (Google Sheets sync)
+        run: node runScript.js
+        continue-on-error: true  # Don't fail the build if script times out
+
+      - name: Upload Living Docs as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: living-docs
+          path: living-docs/
+          retention-days: 30
+
+      # Only commit and push on main branch (not on PRs)
+      - name: Commit and push Living Docs
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add living-docs/
+          git diff --staged --quiet || git commit -m "docs: Auto-generate living documentation"
+          git push
+

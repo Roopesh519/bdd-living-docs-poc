@@ -1,0 +1,14 @@
+{
+  "name": "bdd-living-docs-poc",
+  "version": "1.0.0",
+  "description": "BDD Living Documentation with bidirectional traceability",
+  "scripts": {
+    "generate-docs": "node generateLivingDocs.js",
+    "sync-sheets": "node runScript.js",
+    "build": "npm run generate-docs && npm run sync-sheets"
+  },
+  "dependencies": {
+    "googleapis": "^169.0.0",
+    "node-fetch": "^3.3.2"
+  }
+}
